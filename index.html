@@ -3,18 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moving button | Jessica</title>
-    <link rel="stylesheet" href="style.css"/>
+    <title>Just Say Yes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <style>*{box-sizing: border-box; padding: 0; margin: 0;}</style>
 </head>
-<body>
-    <div class="wrapper">
-        <h2 class="question">Do you love me?</h2>
-        <img class="gif" alt="gif" src="https://media0.giphy.com/media/t8Lo2mPAzOcmVTgtGe/giphy.gif?cid=6c09b952231uyrnduhdsf4wqnxz03rv9wx3ni5sm0zolrxz3&ep=v1_stickers_related&rid=giphy.gif&ct=s"/>
-        <div class="btn-group">
-            <button class="yes-btn">Yes</button>
-            <button class="no-btn">No</button>
+
+<body class="flex justify-center items-center bg-[whitesmoke] min-height-[100vh]">
+    <div class="wrapper flex flex-col justify-center items-center text-center">
+        <h2 class="question text-center text-[5em] text-[#e94d58] my-[2rem]" style="font-family: 'Dancing Script', cursive;">
+            Do you love me???
+        </h2>
+        <img class="gif" alt="gif" src="./imgs/giphy.gif"/>
+        <div class="btn-group flex justify-center mt-4 w-full h-[4rem]">
+            <button class="absolute h-[3rem] w-[150px] outline-0 rounded-lg ml-[-200px] cursor-pointer text-[1.2em] text-white 
+            bg-[#e94d58] yes-btn" style="box-shadow: 0 2px 4px gray; border: 2px solid #e94d58;">Yes yes yes</button>
+            <button class="absolute h-[3rem] w-[150px] outline-0 rounded-lg mr-[-200px] cursor-pointer text-[1.2em] text-[#e94d58]
+            bg-white no-btn" style="box-shadow: 0 2px 4px gray; border: 2px solid #e94d58;">Never</button>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        const wrapper = document.querySelector(".wrapper");
+        const question = document.querySelector(".question");
+        const gif = document.querySelector(".gif");
+        const grBtn = document.querySelector(".btn-group")
+        const yesBtn = document.querySelector(".yes-btn");
+        const noBtn = document.querySelector(".no-btn");
+        
+        yesBtn.addEventListener("click", () => {
+          question.innerHTML = "I also love you very muchhhh! 😘";
+          gif.src =
+            "./imgs/tonton-friends-heart.gif";
+          grBtn.innerHTML="";
+        });
+        
+        noBtn.addEventListener("mouseover", () => {
+          const noBtnRect = noBtn.getBoundingClientRect();
+          const maxX = window.innerWidth - noBtnRect.width;
+          const maxY = window.innerHeight - noBtnRect.height;
+        
+          const randomX = Math.floor(Math.random() * maxX);
+          const randomY = Math.floor(Math.random() * maxY);
+        
+          noBtn.style.left = randomX + "px";
+          noBtn.style.top = randomY + "px";
+        });
+    </script>
+
 </body>
 </html>
